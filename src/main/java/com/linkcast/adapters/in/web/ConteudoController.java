@@ -2,6 +2,7 @@ package com.linkcast.adapters.in.web;
 
 import com.linkcast.adapters.in.web.dto.ConteudoResponse;
 import com.linkcast.adapters.in.web.dto.CriarConteudoRequest;
+import com.linkcast.adapters.in.web.dto.CriarConteudoResponse;
 import com.linkcast.application.port.in.BuscarConteudoPorIdUseCase;
 import com.linkcast.application.port.in.CriarConteudoUseCase;
 import com.linkcast.application.port.in.ListarConteudosUseCase;
@@ -38,12 +39,12 @@ public class ConteudoController {
     }
 
     @PostMapping
-    @Operation(summary = "Criar novo conteúdo", description = "Cria um novo conteúdo no sistema")
+    @Operation(summary = "Criar novo conteúdo", description = "Cria um novo conteúdo e gera automaticamente um episódio")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Conteúdo criado com sucesso"),
+        @ApiResponse(responseCode = "201", description = "Conteúdo e episódio criados com sucesso"),
         @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos")
     })
-    public ResponseEntity<ConteudoResponse> criar(@RequestBody CriarConteudoRequest request) {
+    public ResponseEntity<CriarConteudoResponse> criar(@RequestBody CriarConteudoRequest request) {
         CriarConteudoUseCase.CriarConteudoCommand command = 
             new CriarConteudoUseCase.CriarConteudoCommand(
                 request.usuarioId(),
@@ -52,8 +53,10 @@ public class ConteudoController {
                 request.textoOriginal()
             );
         
-        Conteudo conteudo = criarConteudoUseCase.executar(command);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ConteudoResponse.from(conteudo));
+        CriarConteudoUseCase.CriarConteudoResult result = criarConteudoUseCase.executar(command);
+        
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(CriarConteudoResponse.from(result.conteudo(), result.episodio()));
     }
 
     @GetMapping

@@ -6,6 +6,11 @@ import { Conteudo, CriarConteudoRequest } from '../models/conteudo.model';
 import { Episodio, CriarEpisodioRequest } from '../models/episodio.model';
 import { ApiError } from '../models/api-error.model';
 
+export interface CriarConteudoResponse {
+  conteudo: Conteudo;
+  episodio: Episodio;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,8 +34,13 @@ export class ConteudoService {
       .pipe(catchError(this.handleError));
   }
 
-  criar(request: CriarConteudoRequest): Observable<Conteudo> {
-    return this.http.post<Conteudo>(this.baseUrl, request)
+  criar(request: CriarConteudoRequest): Observable<CriarConteudoResponse> {
+    return this.http.post<CriarConteudoResponse>(this.baseUrl, request)
+      .pipe(catchError(this.handleError));
+  }
+
+  listarEpisodios(conteudoId: string): Observable<Episodio[]> {
+    return this.http.get<Episodio[]>(`${this.baseUrl}/${conteudoId}/episodios`)
       .pipe(catchError(this.handleError));
   }
 

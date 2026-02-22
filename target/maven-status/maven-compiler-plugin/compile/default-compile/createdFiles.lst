@@ -1,6 +1,8 @@
 com/linkcast/adapters/in/web/exception/GlobalExceptionHandler.class
+com/linkcast/adapters/in/web/dto/CriarConteudoResponse$ConteudoInfo.class
 com/linkcast/adapters/out/persistence/repository/ConteudoJpaRepository.class
 com/linkcast/adapters/out/persistence/repository/UsuarioJpaRepository.class
+com/linkcast/adapters/in/web/dto/CriarConteudoResponse.class
 com/linkcast/domain/model/Episodio.class
 com/linkcast/domain/exception/ConteudoNaoEncontradoException.class
 com/linkcast/adapters/in/web/dto/CriarEpisodioRequest.class
@@ -16,8 +18,10 @@ com/linkcast/adapters/in/web/EpisodioController.class
 com/linkcast/adapters/out/persistence/repository/EpisodioJpaRepository.class
 com/linkcast/domain/exception/RegraDeNegocioException.class
 com/linkcast/adapters/out/persistence/mapper/EpisodioMapper.class
+com/linkcast/adapters/in/web/dto/CriarConteudoResponse$EpisodioInfo.class
 com/linkcast/adapters/out/persistence/mapper/AudioMapper.class
 com/linkcast/adapters/out/persistence/entity/EpisodioJpaEntity.class
+com/linkcast/application/port/in/CriarConteudoUseCase$CriarConteudoResult.class
 com/linkcast/domain/enums/StatusEpisodio.class
 com/linkcast/application/service/ListarConteudosService.class
 com/linkcast/adapters/out/persistence/mapper/UsuarioMapper.class

@@ -3,6 +3,7 @@
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/in/web/EpisodioController.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/in/web/dto/ConteudoResponse.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/in/web/dto/CriarConteudoRequest.java
+/Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/in/web/dto/CriarConteudoResponse.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/in/web/dto/CriarEpisodioRequest.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/in/web/dto/EpisodioResponse.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/in/web/dto/ErrorResponse.java

@@ -26,7 +26,7 @@ export class NovoConteudoComponent {
 
   salvar(): void {
     if (!this.urlOrigem) {
-      this.erro = 'URL de origem é obrigatória.';
+      this.erro = 'URL de origem e obrigatoria.';
       return;
     }
 
@@ -41,8 +41,8 @@ export class NovoConteudoComponent {
     };
 
     this.conteudoService.criar(request).subscribe({
-      next: (conteudo) => {
-        this.router.navigate(['/conteudos', conteudo.id]);
+      next: (result) => {
+        this.router.navigate(['/conteudos', result.conteudo.id]);
       },
       error: (error) => {
         this.erro = error.message;

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { Conteudo } from '../../models/conteudo.model';
-import { Episodio, CriarEpisodioRequest } from '../../models/episodio.model';
+import { Episodio } from '../../models/episodio.model';
 import { ConteudoService } from '../../services/conteudo.service';
 
 @Component({
@@ -19,18 +19,16 @@ export class DetalheConteudoComponent implements OnInit {
   private readonly conteudoService = inject(ConteudoService);
 
   conteudo: Conteudo | null = null;
-  episodio: Episodio | null = null;
+  episodios: Episodio[] = [];
   carregando = false;
-  gerandoEpisodio = false;
+  carregandoEpisodios = false;
   erro: string | null = null;
-  mostrarFormEpisodio = false;
-  tituloEpisodio = '';
-  descricaoEpisodio = '';
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.carregarConteudo(id);
+      this.carregarEpisodios(id);
     }
   }
 
@@ -50,42 +48,16 @@ export class DetalheConteudoComponent implements OnInit {
     });
   }
 
-  podeGerarEpisodio(): boolean {
-    return this.conteudo?.status !== 'ERRO';
-  }
+  carregarEpisodios(conteudoId: string): void {
+    this.carregandoEpisodios = true;
 
-  abrirFormEpisodio(): void {
-    this.mostrarFormEpisodio = true;
-    this.tituloEpisodio = this.conteudo?.titulo || '';
-    this.descricaoEpisodio = '';
-  }
-
-  cancelarEpisodio(): void {
-    this.mostrarFormEpisodio = false;
-    this.tituloEpisodio = '';
-    this.descricaoEpisodio = '';
-  }
-
-  gerarEpisodio(): void {
-    if (!this.conteudo || !this.podeGerarEpisodio()) return;
-
-    this.gerandoEpisodio = true;
-    this.erro = null;
-
-    const request: CriarEpisodioRequest = {
-      titulo: this.tituloEpisodio || null,
-      descricao: this.descricaoEpisodio || null
-    };
-
-    this.conteudoService.gerarEpisodio(this.conteudo.id, request).subscribe({
-      next: (episodio) => {
-        this.episodio = episodio;
-        this.gerandoEpisodio = false;
-        this.mostrarFormEpisodio = false;
+    this.conteudoService.listarEpisodios(conteudoId).subscribe({
+      next: (dados) => {
+        this.episodios = dados;
+        this.carregandoEpisodios = false;
       },
-      error: (error) => {
-        this.erro = error.message;
-        this.gerandoEpisodio = false;
+      error: () => {
+        this.carregandoEpisodios = false;
       }
     });
   }
@@ -115,5 +87,12 @@ export class DetalheConteudoComponent implements OnInit {
 
   formatarData(data: string): string {
     return new Date(data).toLocaleString('pt-BR');
+  }
+
+  formatarDuracao(segundos: number | null): string {
+    if (!segundos) return '-';
+    const min = Math.floor(segundos / 60);
+    const seg = segundos % 60;
+    return `${min}:${seg.toString().padStart(2, '0')}`;
   }
 }
