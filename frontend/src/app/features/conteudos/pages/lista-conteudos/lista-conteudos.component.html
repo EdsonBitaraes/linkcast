@@ -1,0 +1,60 @@
+<div class="container">
+  <header class="header">
+    <h1>LinkCast</h1>
+    <p>Transforme conteúdos em episódios de podcast</p>
+  </header>
+
+  <div class="actions">
+    <a routerLink="/novo-conteudo" class="btn btn-primary">
+      + Novo Conteúdo
+    </a>
+    <button (click)="carregarConteudos()" class="btn btn-secondary" [disabled]="carregando">
+      Atualizar
+    </button>
+  </div>
+
+  <div *ngIf="carregando" class="loading">
+    Carregando...
+  </div>
+
+  <div *ngIf="erro" class="error">
+    {{ erro }}
+  </div>
+
+  <div *ngIf="!carregando && !erro && conteudos.length === 0" class="empty">
+    Nenhum conteúdo cadastrado.
+    <a routerLink="/novo-conteudo">Criar primeiro conteúdo</a>
+  </div>
+
+  <table *ngIf="!carregando && !erro && conteudos.length > 0" class="table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Status</th>
+        <th>Data de Criação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conteudo of conteudos">
+        <td>
+          <a [routerLink]="['/conteudos', conteudo.id]" class="link">
+            {{ conteudo.titulo || 'Sem título' }}
+          </a>
+          <div class="url-small">{{ conteudo.urlOrigem }}</div>
+        </td>
+        <td>
+          <span class="badge" [ngClass]="getStatusClass(conteudo.status)">
+            {{ conteudo.status }}
+          </span>
+        </td>
+        <td>{{ formatarData(conteudo.criadoEm) }}</td>
+        <td>
+          <a [routerLink]="['/conteudos', conteudo.id]" class="btn btn-small">
+            Ver detalhes
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

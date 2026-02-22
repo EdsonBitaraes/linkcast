@@ -1,0 +1,127 @@
+<div class="container">
+  <header class="header">
+    <button (click)="voltar()" class="btn btn-back">
+      ← Voltar
+    </button>
+    <h1>Detalhes do Conteúdo</h1>
+  </header>
+
+  <div *ngIf="carregando" class="loading">
+    Carregando...
+  </div>
+
+  <div *ngIf="erro" class="error">
+    {{ erro }}
+  </div>
+
+  <div *ngIf="!carregando && !erro && conteudo" class="content">
+    <div class="card">
+      <h2>{{ conteudo.titulo || 'Sem título' }}</h2>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Status</label>
+          <span class="badge" [ngClass]="getStatusClass(conteudo.status)">
+            {{ conteudo.status }}
+          </span>
+        </div>
+        
+        <div class="info-item">
+          <label>Criado em</label>
+          <span>{{ formatarData(conteudo.criadoEm) }}</span>
+        </div>
+      </div>
+
+      <div class="info-item full-width">
+        <label>URL de Origem</label>
+        <a [href]="conteudo.urlOrigem" target="_blank" class="link">
+          {{ conteudo.urlOrigem }}
+        </a>
+      </div>
+
+      <div class="info-item full-width" *ngIf="conteudo.textoOriginal">
+        <label>Texto Original</label>
+        <p class="text-content">{{ conteudo.textoOriginal }}</p>
+      </div>
+    </div>
+
+    <div class="actions-section">
+      <h3>Gerar Episódio</h3>
+      
+      <div *ngIf="!podeGerarEpisodio()" class="warning">
+        Não é possível gerar episódio para conteúdo com status ERRO.
+      </div>
+
+      <div *ngIf="!mostrarFormEpisodio && podeGerarEpisodio() && !episodio">
+        <button (click)="abrirFormEpisodio()" class="btn btn-primary">
+          + Gerar Episódio
+        </button>
+      </div>
+
+      <div *ngIf="mostrarFormEpisodio" class="form-episodio">
+        <div class="form-group">
+          <label for="titulo">Título do Episódio</label>
+          <input 
+            type="text" 
+            id="titulo" 
+            [(ngModel)]="tituloEpisodio" 
+            placeholder="Título do episódio (opcional)"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea 
+            id="descricao" 
+            [(ngModel)]="descricaoEpisodio" 
+            rows="3"
+            placeholder="Descrição do episódio (opcional)"
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button (click)="cancelarEpisodio()" class="btn btn-secondary">
+            Cancelar
+          </button>
+          <button 
+            (click)="gerarEpisodio()" 
+            class="btn btn-primary"
+            [disabled]="gerandoEpisodio"
+          >
+            {{ gerandoEpisodio ? 'Gerando...' : 'Gerar Episódio' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="episodio" class="episodio-section">
+      <h3>Episódio Gerado</h3>
+      
+      <div class="card episodio-card">
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Título</label>
+            <span>{{ episodio.titulo || 'Sem título' }}</span>
+          </div>
+          
+          <div class="info-item">
+            <label>Status</label>
+            <span class="badge" [ngClass]="getStatusEpisodioClass(episodio.status)">
+              {{ episodio.status }}
+            </span>
+          </div>
+        </div>
+        
+        <div class="info-item full-width" *ngIf="episodio.descricao">
+          <label>Descrição</label>
+          <p>{{ episodio.descricao }}</p>
+        </div>
+        
+        <div class="info-item full-width">
+          <label>Criado em</label>
+          <span>{{ formatarData(episodio.criadoEm) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -35,6 +35,7 @@
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/service/CriarConteudoService.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/service/GerarEpisodioService.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/service/ListarConteudosService.java
+/Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/config/CorsConfig.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/config/OpenApiConfig.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/domain/enums/StatusConteudo.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/domain/enums/StatusEpisodio.java

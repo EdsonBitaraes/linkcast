@@ -32,6 +32,7 @@ com/linkcast/application/port/in/GerarEpisodioUseCase.class
 com/linkcast/adapters/out/persistence/EpisodioRepositoryAdapter.class
 com/linkcast/adapters/in/web/dto/ConteudoResponse.class
 com/linkcast/adapters/in/web/dto/EpisodioResponse.class
+com/linkcast/config/CorsConfig.class
 com/linkcast/application/service/BuscarConteudoPorIdService.class
 com/linkcast/domain/model/Audio.class
 com/linkcast/adapters/out/persistence/entity/AudioJpaEntity.class

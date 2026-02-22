@@ -1,0 +1,65 @@
+<div class="container">
+  <header class="header">
+    <button (click)="cancelar()" class="btn btn-back">
+      &#8592; Voltar
+    </button>
+    <h1>Novo Conteúdo</h1>
+  </header>
+
+  <div class="info-bar">
+    <strong>Usuario:</strong> teste&#64;linkcast.com
+  </div>
+
+  <div *ngIf="erro" class="error">
+    {{ erro }}
+  </div>
+
+  <form (ngSubmit)="salvar()" class="form">
+    <div class="form-group">
+      <label for="titulo">Titulo</label>
+      <input 
+        type="text" 
+        id="titulo" 
+        [(ngModel)]="titulo" 
+        name="titulo"
+        placeholder="Titulo do conteudo (opcional)"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="urlOrigem">URL de Origem *</label>
+      <input 
+        type="url" 
+        id="urlOrigem" 
+        [(ngModel)]="urlOrigem" 
+        name="urlOrigem"
+        placeholder="https://exemplo.com/conteudo"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="textoOriginal">Texto Original</label>
+      <textarea 
+        id="textoOriginal" 
+        [(ngModel)]="textoOriginal" 
+        name="textoOriginal"
+        rows="6"
+        placeholder="Texto original do conteudo (opcional)"
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" (click)="cancelar()" class="btn btn-secondary">
+        Cancelar
+      </button>
+      <button 
+        type="submit" 
+        class="btn btn-primary"
+        [disabled]="enviando || !urlOrigem"
+      >
+        {{ enviando ? 'Salvando...' : 'Salvar' }}
+      </button>
+    </div>
+  </form>
+</div>
