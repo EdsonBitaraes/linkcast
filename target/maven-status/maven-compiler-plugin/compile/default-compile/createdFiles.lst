@@ -14,6 +14,8 @@ com/linkcast/LinkCastApplication.class
 com/linkcast/application/port/out/AudioRepositoryPort.class
 com/linkcast/adapters/out/persistence/entity/ConteudoJpaEntity.class
 com/linkcast/adapters/in/web/dto/CriarConteudoRequest.class
+com/linkcast/application/port/out/ScrapingPort.class
+com/linkcast/adapters/out/scraping/JsoupScrapingAdapter.class
 com/linkcast/adapters/in/web/EpisodioController.class
 com/linkcast/adapters/out/persistence/repository/EpisodioJpaRepository.class
 com/linkcast/domain/exception/RegraDeNegocioException.class

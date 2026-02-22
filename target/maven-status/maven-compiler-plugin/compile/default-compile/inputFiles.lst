@@ -24,6 +24,7 @@
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/out/persistence/repository/ConteudoJpaRepository.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/out/persistence/repository/EpisodioJpaRepository.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/out/persistence/repository/UsuarioJpaRepository.java
+/Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/adapters/out/scraping/JsoupScrapingAdapter.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/in/BuscarConteudoPorIdUseCase.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/in/CriarConteudoUseCase.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/in/GerarEpisodioUseCase.java
@@ -31,6 +32,7 @@
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/out/AudioRepositoryPort.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/out/ConteudoRepositoryPort.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/out/EpisodioRepositoryPort.java
+/Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/out/ScrapingPort.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/port/out/UsuarioRepositoryPort.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/service/BuscarConteudoPorIdService.java
 /Users/edsonbitaraes/Documents/Desenvolvimento/linkcast/workspace/linkcast/src/main/java/com/linkcast/application/service/CriarConteudoService.java
